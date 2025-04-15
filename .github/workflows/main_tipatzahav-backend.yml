@@ -14,9 +14,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4 # השתמש בגרסה עדכנית
+     - uses: actions/checkout@v4
+  with:
+    path: '.' # ודא שהקבצים יורדים לתיקייה הנוכחית
 
-      - name: Set up Node.js version
+        - name: Set up Node.js version
         uses: actions/setup-node@v4 # השתמש בגרסה עדכנית
         with:
           node-version: '18.x' # או הגרסה שבחרת ב-App Service
