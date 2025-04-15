@@ -14,33 +14,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-     - uses: actions/checkout@v4
-  with:
-    path: '.' # ודא שהקבצים יורדים לתיקייה הנוכחית
+      # שלב 1: הורדת הקוד מה-Repository
+      - uses: actions/checkout@v4
+        # אפשר להוסיף with: path: '.' אם יש בעיות, אבל ננסה בלי כרגע
 
-        - name: Set up Node.js version
-        uses: actions/setup-node@v4 # השתמש בגרסה עדכנית
+      # שלב 2: הגדרת גרסת Node.js
+      - name: Set up Node.js version
+        uses: actions/setup-node@v4
         with:
           node-version: '18.x' # או הגרסה שבחרת ב-App Service
 
-      - name: List files in the checkout directory # שלב בדיקה חדש
-        run: ls -la # פקודה שמציגה את כל הקבצים והתיקיות
-
+      # שלב 3: התקנת תלויות בתיקיית ה-backend
       - name: Install dependencies in backend folder
         run: npm install
-        working-directory: backend # 2 רווחים לפני working-directory
+        working-directory: backend # מריץ את הפקודה בתוך תיקיית backend
 
       # אם יש לך שלב build ב-backend (נדיר, אבל אם כן תוסיף כאן)
       # - name: Build backend (if needed)
       #   run: npm run build --if-present
-      #   working-directory: backend # שים לב להזחה גם פה אם תוסיף
+      #   working-directory: backend
 
-      # שלב העלאה ל-Azure
+      # שלב 4: העלאה ל-Azure Web App
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp # הוספנו ID לשלב
-        uses: azure/webapps-deploy@v3 # השתמש בגרסה עדכנית
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'tipatzahav-backend' # <<< ודא שזה שם ה-App Service שיצרת
           slot-name: 'Production' # בדרך כלל production
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EXAMPLE }} # <<< חשוב מאוד: השם כאן חייב להיות **זהה** לשם ה-Secret ש-Azure יצר ב-GitHub (בדוק בהגדרות -> Secrets -> Actions)
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EXAMPLE }} # <<< ודא שזה שם ה-Secret הנכון מהגדרות GitHub
           package: . # מעלים את כל ה-repository (ופקודת ה-startup תטפל בתיקייה)
