@@ -21,9 +21,12 @@ jobs:
         with:
           node-version: '18.x' # או הגרסה שבחרת ב-App Service
 
-      - name: Install dependencies in backend folder # *** התיקון שלנו ***
+      - name: List files in the checkout directory # שלב בדיקה חדש
+        run: ls -la # פקודה שמציגה את כל הקבצים והתיקיות
+
+      - name: Install dependencies in backend folder
         run: npm install
-        working-directory: backend  # <<< תוקנה ההזחה כאן (2 רווחים)
+        working-directory: backend # 2 רווחים לפני working-directory
 
       # אם יש לך שלב build ב-backend (נדיר, אבל אם כן תוסיף כאן)
       # - name: Build backend (if needed)
