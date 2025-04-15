@@ -23,12 +23,12 @@ jobs:
 
       - name: Install dependencies in backend folder # *** התיקון שלנו ***
         run: npm install
-       working-directory: backend
+        working-directory: backend  # <<< תוקנה ההזחה כאן (2 רווחים)
 
       # אם יש לך שלב build ב-backend (נדיר, אבל אם כן תוסיף כאן)
       # - name: Build backend (if needed)
       #   run: npm run build --if-present
-      #   working-directory: ./backend
+      #   working-directory: backend # שים לב להזחה גם פה אם תוסיף
 
       # שלב העלאה ל-Azure
       - name: 'Deploy to Azure Web App'
