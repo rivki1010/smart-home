@@ -41,5 +41,5 @@ jobs:
         with:
           app-name: 'tipatzahav-backend' # <<< ודא שזה שם ה-App Service שיצרת
           slot-name: 'Production' # בדרך כלל production
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EXAMPLE }} # <<< ודא שזה שם ה-Secret הנכון מהגדרות GitHub
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_CLIENTID_B84CD1E1AF2A4A89A6701370A18E6325 }} # <<< ודא שזה שם ה-Secret הנכון מהגדרות GitHub
           package: . # מעלים את כל ה-repository (ופקודת ה-startup תטפל בתיקייה)
