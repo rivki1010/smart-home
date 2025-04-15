@@ -23,7 +23,7 @@ jobs:
 
       - name: Install dependencies in backend folder # *** התיקון שלנו ***
         run: npm install
-        working-directory: ./backend # <<< ודא שזה הנתיב הנכון לתיקיית ה-backend
+       working-directory: backend
 
       # אם יש לך שלב build ב-backend (נדיר, אבל אם כן תוסיף כאן)
       # - name: Build backend (if needed)
