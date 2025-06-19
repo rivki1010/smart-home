@@ -1,9 +1,7 @@
-# Deployment attempt - 202506192230
-Flask==3.0.3
-gunicorn==22.0.0
-requests==2.32.3
-google-generativeai==0.7.1
-pydub==0.25.1
-ffmpeg-python==0.2.0
-threaded==4.0.9
-Werkzeug==3.0.3
+Flask
+gunicorn
+requests
+google-generativeai
+pydub
+ffmpeg-python
+threaded
