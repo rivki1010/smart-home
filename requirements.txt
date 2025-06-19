@@ -1,7 +1,6 @@
-Flask>=2.0
+Flask
 gunicorn
 requests
-anthropic
 google-generativeai
 pydub
 ffmpeg-python
