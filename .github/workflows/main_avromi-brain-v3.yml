@@ -22,7 +22,6 @@ jobs:
         run: pip install -r requirements.txt
       
       - name: 'Deploy to Azure Web App'
-        # --- !!! זו השורה הנכונה !!! ---
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'avromi-brain-v3'
