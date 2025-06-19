@@ -79,6 +79,22 @@ def control_home_assistant(action, entity_id):
 @app.route('/api/call', methods=['GET', 'POST'])
 def handle_call():
     print("\n\n>>> התקבלה בקשה חדשה מימות המשיח!", flush=True)
+
+    # שלב 1: קבלת מזהה השיחה במקום קישור להקלטה
+    call_id = request.values.get('ApiCallId')
+    if not call_id:
+        print("XXX לא התקבל מזהה שיחה (ApiCallId).", flush=True)
+        return "read=t-shgia-lo-kibalti-mispar-sicha=,hangup"
+    
+    print(f">>> התקבל מזהה שיחה: {call_id}", flush=True)
+
+    # שלב 2: בניית הקישור לקובץ ההקלטה בשרתי ימות המשיח
+    # הנתיב הוא בדרך כלל: /ivr2/איזור/מספר מערכת/שלוחה/שם הקובץ
+    # נצטרך לנחש את מספר המערכת או למצוא אותו. נניח שהוא 12345
+    # שם הקובץ יהיה מזהה השיחה עם סיומת. ננסה .wav
+    recording_url = f"http://www.yemot.co.il/IVR2/12345/1/{call_id}.wav"
+    print(f">>> מנסה להוריד הקלטה מהנתיב: {recording_url}", flush=True)
+    print("\n\n>>> התקבלה בקשה חדשה מימות המשיח!", flush=True)
     temp_original_audio = "temp_original_audio.tmp"
     temp_converted_audio = "temp_converted_audio.wav"
     recording_url = request.values.get('ApiRecordFile')
