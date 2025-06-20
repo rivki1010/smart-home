@@ -1,9 +1,2 @@
-# Forcing GitHub Action refresh
-# Forcing GitHub בדיקה 5
 Flask
 gunicorn
-requests
-google-generativeai
-pydub
-ffmpeg-python
-threaded
