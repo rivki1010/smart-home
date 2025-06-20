@@ -63,7 +63,12 @@ def analyze_audio_with_gemini(audio_file_path):
         return {"error": str(e)}
 
 def control_home_assistant(action, entity_id):
+    # !!! השורה החדשה חייבת להיות מוזחת פנימה !!!
+    print(f"--- DEBUG: מנסה לפנות ל-Home Assistant בכתובת: {HA_URL}", flush=True)
+    
+    # מחקנו את השורה הכפולה, נשארה רק זו
     print(f">>> שולח פקודה ל-Home Assistant: פעולה '{action}' על ישות '{entity_id}'", flush=True)
+    
     domain = entity_id.split('.')[0]
     service_url = f"{HA_URL}/api/services/{domain}/{action}"
     headers = {"Authorization": f"Bearer {HA_TOKEN}", "Content-Type": "application/json"}
