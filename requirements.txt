@@ -1,2 +1,7 @@
 Flask
 gunicorn
+requests
+google-generativeai
+pydub
+ffmpeg-python
+threaded
